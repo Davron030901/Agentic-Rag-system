@@ -19,4 +19,4 @@ RUN mkdir -p /app/data && chmod -R 777 /app/data
 EXPOSE 7860
 
 # Single worker: embedded Qdrant holds an on-disk lock (see README limitations).
-CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "7860", "--workers", "1"]
+CMD uvicorn app.api:app --host 0.0.0.0 --port ${PORT:-7860} --workers 1
