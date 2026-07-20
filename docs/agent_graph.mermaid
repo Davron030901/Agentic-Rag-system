@@ -1,0 +1,17 @@
+%% Adaptive RAG decision graph (LangGraph control flow)
+flowchart TD
+    START([START]) --> R[retrieve]
+    R --> GD[grade_documents]
+    GD -- relevant --> G[generate]
+    GD -- weak / none --> W[web_search]
+    W --> G
+    G --> GG[grade_generation]
+    GG -- grounded + useful --> E([END])
+    GG -- not grounded<br/>retry-capped --> G
+    GG -- grounded but not useful<br/>retry-capped --> W
+    GG -- retry cap hit --> E
+
+    classDef node fill:#131a2b,stroke:#6ea8fe,color:#e6ebf5;
+    classDef web fill:#1b2334,stroke:#f0a35e,color:#f0a35e;
+    class R,GD,G,GG node;
+    class W web;

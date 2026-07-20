@@ -1,0 +1,20 @@
+{
+  "description": "Evaluation set. `expected_source: null` marks intentionally out-of-document questions (the correct behaviour is web fallback or an honest refusal).",
+  "questions": [
+    {"id": 1, "question": "What is the main problem this document addresses?", "expected_keywords": ["problem", "challenge"], "in_document": true},
+    {"id": 2, "question": "Which method or approach does the paper propose?", "expected_keywords": ["method", "approach", "propose"], "in_document": true},
+    {"id": 3, "question": "What datasets or data were used?", "expected_keywords": ["dataset", "data"], "in_document": true},
+    {"id": 4, "question": "What are the reported results or key metrics?", "expected_keywords": ["result", "accuracy", "score"], "in_document": true},
+    {"id": 5, "question": "What are the stated limitations?", "expected_keywords": ["limitation", "future"], "in_document": true},
+    {"id": 6, "question": "Who are the authors or contributors?", "expected_keywords": ["author"], "in_document": true},
+    {"id": 7, "question": "What does the architecture diagram show?", "expected_keywords": ["architecture", "diagram", "figure"], "in_document": true, "requires_image": true},
+    {"id": 8, "question": "Summarize the conclusion in one sentence.", "expected_keywords": ["conclusion"], "in_document": true},
+    {"id": 9, "question": "What baseline is the method compared against?", "expected_keywords": ["baseline", "compare"], "in_document": true},
+    {"id": 10, "question": "What evaluation metric is emphasized?", "expected_keywords": ["metric", "evaluation"], "in_document": true},
+    {"id": 11, "question": "What is the current price of Bitcoin today?", "expected_keywords": [], "in_document": false},
+    {"id": 12, "question": "Who won the most recent FIFA World Cup?", "expected_keywords": [], "in_document": false},
+    {"id": 13, "question": "What is the capital of Australia?", "expected_keywords": [], "in_document": false},
+    {"id": 14, "question": "What are the side effects of ibuprofen?", "expected_keywords": [], "in_document": false},
+    {"id": 15, "question": "What is the tallest mountain on Earth?", "expected_keywords": [], "in_document": false}
+  ]
+}

@@ -1,0 +1,19 @@
+%% Ingestion pipeline (index time) and query path (query time)
+flowchart LR
+    subgraph Index["Index time — POST /ingest"]
+        L[Load PDF/text<br/>PyMuPDF] --> T[Extract page text]
+        L --> I[Extract embedded images]
+        I --> C1[caption_image<br/>vision LLM]
+        C1 --> IMG["[Image] caption docs"]
+        T --> CH[Chunk<br/>RecursiveCharacterTextSplitter<br/>size=1000 overlap=150]
+        IMG --> CH
+        CH --> EM[Embed<br/>provider embeddings]
+        EM --> ST[(Qdrant<br/>docs_openai / docs_gemini)]
+    end
+
+    subgraph Query["Query time — POST /chat"]
+        Q[User question] --> RT[Retrieve top-K]
+        ST --> RT
+        RT --> AG[Adaptive RAG agent<br/>grade → web? → generate → grade]
+        AG --> A[Answer + steps + citations]
+    end
